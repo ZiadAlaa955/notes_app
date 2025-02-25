@@ -28,9 +28,7 @@ class _NotesViewBodyState extends State<NotesViewBody> {
             padding: EdgeInsets.only(top: 32, bottom: 15),
             child: CustomAppBar(title: 'Notes', icon: Icons.search),
           ),
-          Expanded(
-            child: NotesListView(),
-          ),
+          Expanded(child: NotesListView()),
         ],
       ),
     );

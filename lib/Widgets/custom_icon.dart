@@ -5,6 +5,7 @@ class CustomIcon extends StatelessWidget {
 
   final IconData icon;
   final void Function()? onPressed;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,13 +15,7 @@ class CustomIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         color: Colors.white.withOpacity(0.05),
       ),
-      child: IconButton(
-        onPressed: onPressed,
-        icon: Icon(
-          icon,
-          size: 28,
-        ),
-      ),
+      child: IconButton(onPressed: onPressed, icon: Icon(icon, size: 28)),
     );
   }
 }

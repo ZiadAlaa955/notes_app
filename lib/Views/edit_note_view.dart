@@ -3,16 +3,12 @@ import 'package:notes_app/Models/note_model.dart';
 import 'package:notes_app/Widgets/edit_note_view_body.dart';
 
 class EditNoteView extends StatelessWidget {
-  const EditNoteView({super.key});
+  const EditNoteView({super.key, required this.note});
 
-  static String id = 'editNoteView';
+  final NoteModel note;
+
   @override
   Widget build(BuildContext context) {
-    NoteModel note = ModalRoute.of(context)!.settings.arguments as NoteModel;
-    return Scaffold(
-      body: EditNoteViewBody(
-        note: note,
-      ),
-    );
+    return Scaffold(body: EditNoteViewBody(note: note));
   }
 }

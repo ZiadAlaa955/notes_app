@@ -9,14 +9,18 @@ import 'package:notes_app/Widgets/custom_text_field.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({super.key});
+
   @override
   State<AddNoteForm> createState() => _AddNoteFormState();
 }
 
 class _AddNoteFormState extends State<AddNoteForm> {
   final GlobalKey<FormState> formKey = GlobalKey();
+
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
   String? title, subTitle;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -30,9 +34,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
             },
             hint: 'Title',
           ),
-          const SizedBox(
-            height: 16,
-          ),
+          const SizedBox(height: 16),
           CustomTextFormField(
             onSaved: (value) {
               subTitle = value;
@@ -40,13 +42,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
             hint: 'Content',
             maxLines: 5,
           ),
-          const SizedBox(
-            height: 20,
-          ),
+          const SizedBox(height: 20),
           const ColorsListView(),
-          const SizedBox(
-            height: 20,
-          ),
+          const SizedBox(height: 20),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return CustomButton(
@@ -57,8 +55,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
                     NoteModel note = createNote(dateFormat);
                     BlocProvider.of<AddNoteCubit>(context).addNote(note);
                   } else {
-                    autovalidateMode = AutovalidateMode.always;
-                    setState(() {});
+                    setState(() {
+                      autovalidateMode = AutovalidateMode.always;
+                    });
                   }
                 },
               );
@@ -77,6 +76,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
       date: dateFormat,
       color: Colors.blue.value,
     );
+
     return note;
   }
 }

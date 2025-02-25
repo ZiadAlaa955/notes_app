@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/Constants.dart';
 import 'package:notes_app/Models/note_model.dart';
-import 'package:notes_app/Widgets/colors_list_view.dart';
-import 'package:notes_app/constants.dart';
+import 'package:notes_app/Widgets/color_item.dart';
 
 class EditNoteColorsListView extends StatefulWidget {
   const EditNoteColorsListView({super.key, required this.note});
+
   final NoteModel note;
   @override
   State<EditNoteColorsListView> createState() => _EditNoteColorsListViewState();
@@ -14,7 +15,7 @@ class _EditNoteColorsListViewState extends State<EditNoteColorsListView> {
   late int currentIndex;
   @override
   void initState() {
-    currentIndex = kColors.indexOf(Color(widget.note.color));
+    currentIndex = kColorsList.indexOf(Color(widget.note.color));
     super.initState();
   }
 
@@ -23,7 +24,7 @@ class _EditNoteColorsListViewState extends State<EditNoteColorsListView> {
     return SizedBox(
       height: 60,
       child: ListView.builder(
-        itemCount: kColors.length,
+        itemCount: kColorsList.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
@@ -31,11 +32,11 @@ class _EditNoteColorsListViewState extends State<EditNoteColorsListView> {
               child: GestureDetector(
                 onTap: () {
                   currentIndex = index;
-                  widget.note.color = kColors[index].value;
+                  widget.note.color = kColorsList[index].value;
                   setState(() {});
                 },
                 child: ColorItem(
-                  color: kColors[index],
+                  color: kColorsList[index],
                   isActive: currentIndex == index ? true : false,
                 ),
               ));
