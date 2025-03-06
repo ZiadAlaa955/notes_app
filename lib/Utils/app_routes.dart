@@ -3,17 +3,17 @@ import 'package:notes_app/Models/note_model.dart';
 import 'package:notes_app/Views/edit_note_view.dart';
 import 'package:notes_app/Views/notes_view.dart';
 
-String notesView = '/';
-String editNoteView = '/editNoteView';
+String notesViewPath = '/';
+String editNoteViewPath = '/editNoteView';
 
 final GoRouter router = GoRouter(
   routes: <RouteBase>[
     GoRoute(
-      path: notesView,
+      path: notesViewPath,
       builder: (context, state) => const NotesView(),
     ),
     GoRoute(
-      path: editNoteView,
+      path: editNoteViewPath,
       builder: (context, state) => EditNoteView(note: state.extra as NoteModel),
     ),
   ],

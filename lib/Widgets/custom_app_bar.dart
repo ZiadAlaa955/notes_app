@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/Widgets/custom_icon.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar(
-      {super.key, required this.title, required this.icon, this.onPressed});
+  const CustomAppBar({
+    super.key,
+    required this.title,
+    required this.icon,
+    this.onPressed,
+  });
 
   final String title;
   final IconData icon;
@@ -14,8 +18,14 @@ class CustomAppBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title, style: const TextStyle(fontSize: 30)),
-        CustomIcon(onPressed: onPressed, icon: icon),
+        Text(
+          title,
+          style: const TextStyle(fontSize: 30),
+        ),
+        CustomIcon(
+          onPressed: onPressed,
+          icon: icon,
+        ),
       ],
     );
   }

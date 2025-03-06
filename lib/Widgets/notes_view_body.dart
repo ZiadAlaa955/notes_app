@@ -15,20 +15,27 @@ class _NotesViewBodyState extends State<NotesViewBody> {
   @override
   void initState() {
     BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(top: 32, bottom: 15),
-            child: CustomAppBar(title: 'Notes', icon: Icons.search),
+            padding: const EdgeInsets.only(top: 38, bottom: 15),
+            child: CustomAppBar(
+              title: 'Notes',
+              icon: Icons.search,
+              onPressed: () {},
+            ),
           ),
-          Expanded(child: NotesListView()),
+          const Expanded(
+            child: NotesListView(),
+          ),
         ],
       ),
     );

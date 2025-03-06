@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:notes_app/Cubits/notes_cubit/cubit/notes_cubit.dart';
 import 'package:notes_app/Models/note_model.dart';
 import 'package:notes_app/Utils/app_routes.dart';
+import 'package:notes_app/Utils/app_utils.dart';
 
 class NoteItem extends StatelessWidget {
   const NoteItem({super.key, required this.note});
@@ -15,11 +16,13 @@ class NoteItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(editNoteView, extra: note);
+        GoRouter.of(context).push(editNoteViewPath, extra: note);
       },
       child: Container(
         decoration: BoxDecoration(
-            color: Color(note.color), borderRadius: BorderRadius.circular(16)),
+          color: Color(note.color),
+          borderRadius: BorderRadius.circular(16),
+        ),
         padding:
             const EdgeInsets.only(top: 24, left: 24, right: 16, bottom: 24),
         child: Column(
@@ -39,15 +42,13 @@ class NoteItem extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: Text(
                   note.subTitle,
-                  style: const TextStyle(
-                    color: Colors.black38,
-                    fontSize: 18,
-                  ),
+                  style: const TextStyle(color: Colors.black38, fontSize: 18),
                 ),
               ),
               trailing: IconButton(
                 onPressed: () {
                   note.delete();
+                  snackBar(context, 'Note Deleted');
                   BlocProvider.of<NotesCubit>(context).fetchAllNotes();
                 },
                 icon: const Icon(FontAwesomeIcons.trash, color: Colors.black),

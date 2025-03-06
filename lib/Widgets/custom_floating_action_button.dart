@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/Constants.dart';
+import 'package:notes_app/Utils/constants.dart';
 import 'package:notes_app/Widgets/add_note_bottom_sheet.dart';
 
 class CustomFloatingActionButton extends StatelessWidget {
