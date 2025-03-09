@@ -5,9 +5,9 @@ void snackBar(BuildContext context, String content) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Text(content),
-      //backgroundColor: kPrimaryColor,
+      backgroundColor: kPrimaryColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
     ),
-    //snackBarAnimationStyle:
   );
 }
 
